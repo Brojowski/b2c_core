@@ -1,4 +1,4 @@
-package com.example.alex.betweentwocities.b2c_core;
+package com.example.b2c_core;
 
 /**
  * Created by alex on 4/6/17.

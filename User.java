@@ -13,6 +13,16 @@ public class User
         uname = username;
     }
 
+    public String getUsername()
+    {
+        return uname;
+    }
+
+    public int getId()
+    {
+        return i;
+    }
+
     @Override
     public boolean equals(Object o)
     {

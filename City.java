@@ -1,5 +1,8 @@
 package com.example.b2c_core;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 /**
@@ -8,10 +11,6 @@ import java.io.Serializable;
 public class City implements Serializable
 {
     private BuildingType[][] _layout = new BuildingType[4][4];
-
-    private int _score = 0;
-    private boolean _scoreUpToDate = false;
-
 
     public City()
     {
@@ -27,12 +26,6 @@ public class City implements Serializable
     public BuildingType[][] getCityLayout()
     {
         return _layout.clone();
-    }
-
-    public void setScore(int score)
-    {
-        _score = score;
-        _scoreUpToDate = true;
     }
 
     public boolean tryShiftUp()
@@ -192,7 +185,6 @@ public class City implements Serializable
         if (inBounds(x,y))
         {
             _layout[y][x] = tile;
-            _scoreUpToDate = false;
             return true;
         }
         return false;
@@ -223,4 +215,11 @@ public class City implements Serializable
         return output.toString();
     }
 
+    @JsonCreator
+    public static City create(@JsonProperty("cityLayout") BuildingType[][] layout)
+    {
+        City city = new City();
+        city._layout = layout;
+        return city;
+    }
 }

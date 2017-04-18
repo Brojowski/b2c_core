@@ -23,6 +23,26 @@ public class DraftTransferObject
         return _cities;
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder out = new StringBuilder();
+        out.append("Tiles:\n");
+        for (BuildingType bType : _tiles)
+        {
+            out.append("\t");
+            out.append(bType);
+            out.append("\n");
+        }
+        out.append("Cities:\n");
+        for (City c : _cities)
+        {
+            out.append(c.toString());
+            out.append("\n");
+        }
+        return out.toString();
+    }
+
     @JsonCreator
     public static DraftTransferObject create(@JsonProperty("tiles") BuildingType[] tiles, @JsonProperty("cities") City[] cities)
     {

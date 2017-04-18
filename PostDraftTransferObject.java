@@ -19,7 +19,7 @@ public class PostDraftTransferObject
     private PostDraftTransferObject(){}
 
     @JsonCreator
-    public static PostDraftTransferObject create(@JsonProperty("selectedTiles") BuildingType[] selectedTiles)
+    public static PostDraftTransferObject create(@JsonProperty("selectedTiles") BuildingType... selectedTiles)
     {
         PostDraftTransferObject pdto = new PostDraftTransferObject();
         pdto._selectedTiles = selectedTiles;

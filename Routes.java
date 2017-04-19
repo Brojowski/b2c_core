@@ -21,6 +21,7 @@ public class Routes
     public class FromServer
     {
         public static final String BEGIN_DRAFT = "draft_start";
+        public static final String BEGIN_PLACE = "play_tiles";
     }
 
 }

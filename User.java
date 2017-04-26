@@ -26,15 +26,7 @@ public class User
     @Override
     public boolean equals(Object o)
     {
-        if (o instanceof String)
-        {
-            String toCompare = (String)o;
-            return uname.compareTo(toCompare) == 0;
-        }
-        else
-        {
-            return false;
-        }
+        return this == o;
     }
 
     @Override

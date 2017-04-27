@@ -10,47 +10,9 @@ import java.io.Serializable;
  */
 public class DraftTransferObject implements Serializable
 {
-    private BuildingType[] _tiles;
-    private City[] _cities;
-
-    private DraftTransferObject(){}
-
-    public BuildingType[] getTiles()
-    {
-        return _tiles;
-    }
-
-    public City[] getCities()
-    {
-        return _cities;
-    }
-
-    @Override
-    public String toString()
-    {
-        StringBuilder out = new StringBuilder();
-        out.append("Tiles:\n");
-        for (BuildingType bType : _tiles)
-        {
-            out.append("\t");
-            out.append(bType);
-            out.append("\n");
-        }
-        out.append("Cities:\n");
-        for (City c : _cities)
-        {
-            out.append(c.toString());
-            out.append("\n");
-        }
-        return out.toString();
-    }
-
-    @JsonCreator
-    public static DraftTransferObject create(@JsonProperty("tiles") BuildingType[] tiles, @JsonProperty("cities") City[] cities)
-    {
-        DraftTransferObject dto = new DraftTransferObject();
-        dto._tiles = tiles;
-        dto._cities = cities;
-        return dto;
-    }
+    public User currentUser;
+    public BuildingType[] availableTiles;
+    public SharedCity leftCity;
+    public SharedCity rightCity;
+    public SharedCity[] otherCities;
 }

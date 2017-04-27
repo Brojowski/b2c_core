@@ -15,6 +15,7 @@ public class Routes
         public static final String JOIN_GAME = "join";
         public static final String SIGN_IN = "login";
         public static final String REQUEST_GAME_LIST = "get_games";
+        public static final String PLACE_COMPLETE = "place_complete";
     }
 
     // Server to client.

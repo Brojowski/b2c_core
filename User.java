@@ -24,7 +24,14 @@ public class User
     @Override
     public boolean equals(Object o)
     {
-        return this == o;
+        return (o instanceof User)
+                && (this.hashCode() == o.hashCode());
+    }
+
+    @Override
+    public String toString()
+    {
+        return uname;
     }
 
     @Override
@@ -35,7 +42,7 @@ public class User
 
     public static User exampleUser()
     {
-        return new User("Test"+ i++);
+        return new User("Test" + i++);
     }
 
     @JsonCreator

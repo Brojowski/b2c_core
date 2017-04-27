@@ -182,7 +182,7 @@ public class City implements Serializable
 
     public boolean tryAddTile(BuildingType tile, int x, int y)
     {
-        if (inBounds(x,y))
+        if (inBounds(x,y) && _layout[y][x] == BuildingType.Blank)
         {
             _layout[y][x] = tile;
             return true;

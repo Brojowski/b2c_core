@@ -5,25 +5,25 @@ package com.example.b2c_core;
  */
 public class SharedCity
 {
-    private User _left;
     private User _right;
+    private User _left;
     private City _city;
 
-    public SharedCity(User p1, User p2)
+    public SharedCity(User right, User left)
     {
-        _left = p1;
-        _right = p2;
+        _left = left;
+        _right = right;
         _city = new City();
     }
 
-    public User getPlayer1()
-    {
-        return _left;
-    }
-
-    public User getPlayer2()
+    public User getRightPlayer()
     {
         return _right;
+    }
+
+    public User getLeftPlayer()
+    {
+        return _left;
     }
 
     public City getCity()

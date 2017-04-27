@@ -1,5 +1,8 @@
 package com.example.b2c_core;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  *
  */
@@ -18,11 +21,6 @@ public class User
         return uname;
     }
 
-    public int getId()
-    {
-        return i;
-    }
-
     @Override
     public boolean equals(Object o)
     {
@@ -38,5 +36,11 @@ public class User
     public static User exampleUser()
     {
         return new User("Test"+ i++);
+    }
+
+    @JsonCreator
+    public static User createUser(@JsonProperty("username") String uname)
+    {
+        return new User(uname);
     }
 }

@@ -23,6 +23,7 @@ public class Routes
     {
         public static final String BEGIN_DRAFT = "draft_start";
         public static final String BEGIN_PLACE = "play_tiles";
+        public static final String BOARD_UPDATE = "board_update";
     }
 
 }

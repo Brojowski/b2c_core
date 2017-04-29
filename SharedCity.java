@@ -3,10 +3,12 @@ package com.example.b2c_core;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by alex on 4/21/17.
  */
-public class SharedCity
+public class SharedCity implements Serializable
 {
     private User _right;
     private User _left;

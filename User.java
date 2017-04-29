@@ -3,10 +3,12 @@ package com.example.b2c_core;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  *
  */
-public class User
+public class User implements Serializable
 {
     private static int i = 0;
     private String uname;

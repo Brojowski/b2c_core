@@ -15,5 +15,5 @@ public class PlaceTransferObject implements Serializable
     public Map<User, BuildingType[]> tiles;
     public SharedCity leftCity;
     public SharedCity rightCity;
-    public SharedCity[] otherCities;
+    public SharedCity otherCity;
 }

@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class City implements Serializable
 {
     private BuildingType[][] _layout = new BuildingType[4][4];
+    private boolean firstTilePlaced = false;
 
     public City()
     {
@@ -85,11 +86,11 @@ public class City implements Serializable
             return false;
         }
 
-        for (int x= 1; x < _layout.length; x++)
+        for (int x = 1; x < _layout.length; x++)
         {
             for (int y = 0; y < _layout[x].length; y++)
             {
-                _layout[y][x-1] = _layout[y][x];
+                _layout[y][x - 1] = _layout[y][x];
             }
         }
 
@@ -112,7 +113,7 @@ public class City implements Serializable
         {
             for (int y = 0; y < _layout[x].length; y++)
             {
-                _layout[y][x] = _layout[y][x-1];
+                _layout[y][x] = _layout[y][x - 1];
             }
         }
 
@@ -176,13 +177,27 @@ public class City implements Serializable
     {
         return x >= 0
                 && x < 4
-                && y >=0
+                && y >= 0
                 && y < 4;
+    }
+
+    public boolean tryPlaceTile(BuildingType tile, int x, int y)
+    {
+        if (!firstTilePlaced
+                || getBuildingAt(x - 1, y) != BuildingType.Blank
+                || getBuildingAt(x + 1, y) != BuildingType.Blank
+                || getBuildingAt(x, y - 1) != BuildingType.Blank
+                || getBuildingAt(x, y + 1) != BuildingType.Blank)
+        {
+            firstTilePlaced = true;
+            return tryAddTile(tile, x, y);
+        }
+        return false;
     }
 
     public boolean tryAddTile(BuildingType tile, int x, int y)
     {
-        if (inBounds(x,y) && _layout[y][x] == BuildingType.Blank)
+        if (inBounds(x, y) )//&& _layout[y][x] == BuildingType.Blank)
         {
             _layout[y][x] = tile;
             return true;
@@ -192,7 +207,7 @@ public class City implements Serializable
 
     public BuildingType getBuildingAt(int x, int y)
     {
-        if (inBounds(x,y))
+        if (inBounds(x, y))
         {
             return _layout[y][x];
         }
@@ -205,7 +220,7 @@ public class City implements Serializable
         StringBuffer output = new StringBuffer();
         for (int y = 0; y < _layout.length; y++)
         {
-            for (int x = 0; x <_layout[y].length; x++)
+            for (int x = 0; x < _layout[y].length; x++)
             {
                 String formatString = "[%-12s]";
                 output.append(String.format(formatString, _layout[y][x]));
